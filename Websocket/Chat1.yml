@@ -1,0 +1,18 @@
+info:
+  name: Chat1
+  type: websocket
+  seq: 1
+
+websocket:
+  url: ws://localhost:5050/ws/chat
+  headers:
+    - name: Origin
+      value: http://localhost:5050
+  message:
+    type: text
+    data: kan du se!!!!
+  auth: inherit
+
+settings:
+  timeout: 0
+  keepAliveInterval: 0
