@@ -1,0 +1,86 @@
+info:
+  name: DoctorNotAvailableFault
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://localhost:5054/Service.svc
+  headers:
+    - name: Content-Type
+      value: text/xml
+    - name: X-Requested-With
+      value: XMLHttpRequest
+    - name: SOAPaction
+      value: http://tempuri.org/IHospitalService/BookAppointment
+  body:
+    type: xml
+    data: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:mod=\"http://schemas.datacontract.org/2004/07/SOAP.Models\">\r
+
+      \   <soapenv:Header>\r
+
+      \      <wsse:Security soapenv:mustUnderstand=\"1\"\r
+
+      \         xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\r
+
+      \         <wsse:UsernameToken>\r
+
+      \            <wsse:Username>SoapUser1</wsse:Username>\r
+
+      \            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">UserPassword1</wsse:Password>\r
+
+      \         </wsse:UsernameToken>\r
+
+      \      </wsse:Security>\r
+
+      \   </soapenv:Header>\r
+
+      \   <soapenv:Body>\r
+
+      \      <tem:BookAppointment>\r
+
+      \         <tem:appointment>\r
+
+      \            <mod:AppointmentDate>2035-08-04T09:00:00</mod:AppointmentDate>\r
+
+      \            <mod:DoctorId>1</mod:DoctorId>\r
+
+      \            <mod:Id>0</mod:Id>\r
+
+      \            <mod:Notes>New appointment</mod:Notes>\r
+
+      \            <mod:PatientId>1</mod:PatientId>\r
+
+      \            <mod:Status>Scheduled</mod:Status>\r
+
+      \         </tem:appointment>\r
+
+      \      </tem:BookAppointment>\r
+
+      \   </soapenv:Body>\r
+
+      </soapenv:Envelope>"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "test(\"Request is rejected with 500\", function () {\r
+
+        \    expect(res.getStatus()).to.equal(500);\r
+
+        });\r
+
+        \r
+
+        test(\"Response contains DoctorNotAvailable fault\", function () {\r
+
+        \    expect(JSON.stringify(res.getBody())).to.include(\"DoctorNotAvailableFault\");\r
+
+        });"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

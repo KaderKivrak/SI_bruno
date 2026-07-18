@@ -1,0 +1,63 @@
+info:
+  name: UpdateAppointment
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: https://localhost:8083/Service.svc
+  headers:
+    - name: Content-Type
+      value: text/xml
+    - name: X-Requested-With
+      value: XMLHttpRequest
+    - name: SOAPaction
+      value: http://tempuri.org/IHospitalService/UpdateAppointment
+  body:
+    type: xml
+    data: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\" xmlns:mod=\"http://schemas.datacontract.org/2004/07/SOAP.Models\">\r
+
+      \   <soapenv:Header>\r
+
+      \      <wsse:Security soapenv:mustUnderstand=\"1\"\r
+
+      \         xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\r
+
+      \         <wsse:UsernameToken>\r
+
+      \            <wsse:Username>SoapUser1</wsse:Username>\r
+
+      \            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">UserPassword1</wsse:Password>\r
+
+      \         </wsse:UsernameToken>\r
+
+      \      </wsse:Security>\r
+
+      \   </soapenv:Header>\r
+
+      \   <soapenv:Body>\r
+
+      \      <tem:UpdateAppointment>\r
+
+      \         <tem:appointment>\r
+
+      \            <mod:AppointmentDate>2026-10-01T10:00:00</mod:AppointmentDate>\r
+
+      \            <mod:Id>{{lastAppointmentId}}</mod:Id>\r
+
+      \            <mod:Notes>Updated appointment</mod:Notes>\r
+
+      \         </tem:appointment>\r
+
+      \      </tem:UpdateAppointment>\r
+
+      \   </soapenv:Body>\r
+
+      </soapenv:Envelope>"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -10,7 +10,7 @@ websocket:
       value: http://localhost:5050
   message:
     type: json
-    data: "{}"
+    data: msg from chat2
   auth: inherit
 
 settings:

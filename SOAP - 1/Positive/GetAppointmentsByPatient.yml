@@ -1,0 +1,55 @@
+info:
+  name: GetAppointmentsByPatient
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://localhost:8083/Service.svc
+  headers:
+    - name: Content-Type
+      value: text/xml
+    - name: X-Requested-With
+      value: XMLHttpRequest
+    - name: SOAPaction
+      value: http://tempuri.org/IHospitalService/GetAppointmentsByPatient
+  body:
+    type: xml
+    data: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r
+
+      \   <soapenv:Header>\r
+
+      \      <wsse:Security soapenv:mustUnderstand=\"1\"\r
+
+      \         xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\r
+
+      \         <wsse:UsernameToken>\r
+
+      \            <wsse:Username>SoapUser1</wsse:Username>\r
+
+      \            <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">UserPassword1</wsse:Password>\r
+
+      \         </wsse:UsernameToken>\r
+
+      \      </wsse:Security>\r
+
+      \   </soapenv:Header>\r
+
+      \   <soapenv:Body>\r
+
+      \      <tem:GetAppointmentsByPatient>\r
+
+      \         <tem:patientId>1</tem:patientId>\r
+
+      \      </tem:GetAppointmentsByPatient>\r
+
+      \   </soapenv:Body>\r
+
+      </soapenv:Envelope>"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

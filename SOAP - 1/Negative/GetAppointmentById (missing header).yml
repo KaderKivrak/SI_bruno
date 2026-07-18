@@ -1,0 +1,57 @@
+info:
+  name: GetAppointmentById (missing header)
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://localhost:5054/Service.svc
+  headers:
+    - name: Content-Type
+      value: text/xml
+    - name: X-Requested-With
+      value: XMLHttpRequest
+      disabled: true
+    - name: SOAPaction
+      value: http://tempuri.org/IHospitalService/GetAppointmentById
+  body:
+    type: xml
+    data: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r
+
+      \    <soapenv:Header/>\r
+
+      \    <soapenv:Body>\r
+
+      \        <tem:GetAppointmentById>\r
+
+      \            <tem:id>{{lastAppointmentId}}</tem:id>\r
+
+      \        </tem:GetAppointmentById>\r
+
+      \    </soapenv:Body>\r
+
+      </soapenv:Envelope>"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "test(\"Request is rejected with 500\", function () {\r
+
+        \    expect(res.getStatus()).to.equal(500);\r
+
+        });\r
+
+        \r
+
+        test(\"Response contains a SOAP fault\", function () {\r
+
+        \    expect(JSON.stringify(res.getBody())).to.include(\"Fault\");\r
+
+        });"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
