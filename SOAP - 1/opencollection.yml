@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: SOAP - 1
+  name: SOAP
 config:
   proxy:
     inherit: true

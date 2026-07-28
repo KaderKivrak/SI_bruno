@@ -16,21 +16,14 @@ http:
       value: http://tempuri.org/IHospitalService/GetAppointmentById
   body:
     type: xml
-    data: "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r
-
-      \    <soapenv:Header/>\r
-
-      \    <soapenv:Body>\r
-
-      \        <tem:GetAppointmentById>\r
-
-      \            <tem:id>{{lastAppointmentId}}</tem:id>\r
-
-      \        </tem:GetAppointmentById>\r
-
-      \    </soapenv:Body>\r
-
-      </soapenv:Envelope>"
+    data: |-
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+          <soapenv:Body>
+              <tem:GetAppointmentById>
+                  <tem:id>{{lastAppointmentId}}</tem:id>
+              </tem:GetAppointmentById>
+          </soapenv:Body>
+      </soapenv:Envelope>
   auth: inherit
 
 runtime:
