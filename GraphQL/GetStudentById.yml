@@ -1,0 +1,23 @@
+info:
+  name: GetStudentById
+  type: graphql
+  seq: 2
+
+graphql:
+  method: POST
+  url: http://localhost:5052/graphql
+  body:
+    query: |-
+      query {
+        studentById(id: 1) {
+          id
+          grade
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

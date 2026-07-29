@@ -7,12 +7,12 @@ grpc:
   url: localhost:5051
   method: /library.LibraryService/BookOperations
   methodType: bidi-streaming
-  protoFilePath: ../../../Desktop/SystemIntegration/gRPC/Protos/library.proto
+  protoFilePath: ../../../../Desktop/SystemIntegration/gRPC/Protos/library.proto
   message:
     - title: message 1
       message: |-
         {
           "operation": "DELETE",
-          "book_id": 6
+          "book_id": 8
         }
   auth: inherit

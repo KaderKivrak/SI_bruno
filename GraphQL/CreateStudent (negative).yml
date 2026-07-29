@@ -1,0 +1,24 @@
+info:
+  name: CreateStudent (negative)
+  type: graphql
+  seq: 5
+
+graphql:
+  method: POST
+  url: http://localhost:5052/graphql
+  body:
+    query: |-
+      mutation {
+        createStudent(name: "Bob", grade: 5) {
+          id
+          name
+          grade
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
