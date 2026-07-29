@@ -1,0 +1,17 @@
+info:
+  name: GetBookById
+  type: grpc
+  seq: 2
+
+grpc:
+  url: localhost:5051
+  method: /library.LibraryService/GetBookById
+  methodType: unary
+  protoFilePath: ../../../Desktop/SystemIntegration/gRPC/Protos/library.proto
+  message:
+    - title: message 1
+      message: |-
+        {
+          "book_id": 6
+        }
+  auth: inherit

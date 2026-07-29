@@ -1,5 +1,5 @@
 info:
-  name: create book
+  name: CreateBook
   type: grpc
   seq: 1
 
@@ -8,11 +8,13 @@ grpc:
   method: /library.LibraryService/CreateBook
   methodType: unary
   protoFilePath: ../../../Desktop/SystemIntegration/gRPC/Protos/library.proto
-  message: |-
-    {
-      "book_name": "bruno book",
-      "author_id": 1,
-      "publisher_id": 1,
-      "publication_year": 2024
-    }
+  message:
+    - title: message 1
+      message: |-
+        {
+          "book_name": "book",
+          "author_id": 1,
+          "publisher_id": 1,
+          "publication_year": 2021
+        }
   auth: inherit

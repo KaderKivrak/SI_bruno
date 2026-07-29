@@ -1,7 +1,7 @@
 info:
   name: Chat1
   type: websocket
-  seq: 1
+  seq: 2
 
 websocket:
   url: ws://localhost:5050/ws/chat
@@ -9,8 +9,11 @@ websocket:
     - name: Origin
       value: http://localhost:5050
   message:
-    type: text
-    data: '"<script>will be sanitizedXXXXX</script>"'
+    - title: message 1
+      selected: false
+      message:
+        type: text
+        data: this is input
   auth: inherit
 
 settings:

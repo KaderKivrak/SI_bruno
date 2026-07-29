@@ -1,0 +1,22 @@
+info:
+  name: UpdateBook (negative)
+  type: grpc
+  seq: 5
+
+grpc:
+  url: localhost:5051
+  method: /library.LibraryService/BookOperations
+  methodType: bidi-streaming
+  protoFilePath: ../../../Desktop/SystemIntegration/gRPC/Protos/library.proto
+  message:
+    - title: message 1
+      message: |-
+        {
+          "operation": "UPDATE",
+          "book_id": 5545,
+          "title": "updated title",
+          "author_id": 1,
+          "publisher_id": 1,
+          "publishing_year": 2020
+        }
+  auth: inherit

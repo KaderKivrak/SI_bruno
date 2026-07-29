@@ -1,7 +1,7 @@
 info:
   name: Chat2
   type: websocket
-  seq: 2
+  seq: 3
 
 websocket:
   url: ws://localhost:5050/ws/chat

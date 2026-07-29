@@ -1,7 +1,7 @@
 info:
   name: Echo
   type: websocket
-  seq: 3
+  seq: 1
 
 websocket:
   url: ws://localhost:5050/ws/echo
@@ -9,8 +9,11 @@ websocket:
     - name: Origin
       value: http://localhost:5050
   message:
-    type: json
-    data: '"<script>will be sanitizedXXXXX</script>"'
+    - title: message 1
+      selected: false
+      message:
+        type: text
+        data: messageAAAAAA
   auth: inherit
 
 settings:
